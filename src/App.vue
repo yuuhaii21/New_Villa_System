@@ -6,7 +6,7 @@
         <h1>🏠 RAVORN Villa Boutiqeu</h1>
         <p>Manage luxury villas with ease</p>
       </div>
-      
+      <router-view></router-view>
       <div class="login-container">
         <div class="login-card">
           <h2>Sign In</h2>
