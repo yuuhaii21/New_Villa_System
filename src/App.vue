@@ -415,13 +415,13 @@
           </div>
           
           <!-- Booking Management Section -->
-          <div v-if="activeSection === 'bookings'" class="section">
+          <!-- <div v-if="activeSection === 'bookings'" class="section">
             <div class="section-header">
               <h2>Booking Management</h2>
               <button class="btn-add" @click="newBooking">+ New Booking</button>
             </div>
             
-            <!-- Booking Tabs -->
+            
             <div class="tabs">
               <button :class="{ active: bookingTab === 'upcoming' }" @click="bookingTab = 'upcoming'">
                 📅 Upcoming ({{ upcomingBookings.length }})
@@ -437,7 +437,7 @@
               </button>
             </div>
             
-            <!-- Bookings Table -->
+            
             <div class="table-responsive">
               <table class="data-table">
                 <thead>
@@ -481,7 +481,7 @@
                 </tbody>
               </table>
             </div>
-          </div>
+          </div> -->
           
           <!-- Villa Management Section -->
           <div v-if="activeSection === 'villas'" class="section">
