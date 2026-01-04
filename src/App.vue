@@ -3,7 +3,7 @@
     <!-- Login Screen -->
     <div v-if="!isLoggedIn" class="login-screen">
       <div class="header">
-        <h1>🏠 Villa Management System</h1>
+        <h1>🏠 RAVORN Villa Boutiqeu</h1>
         <p>Manage luxury villas with ease</p>
       </div>
       
