@@ -21,12 +21,12 @@
           <div v-if="error" class="error-message">{{ error }}</div>
           <button class="btn" @click="login">Sign In to Dashboard</button>
           
-          <div class="demo-info">
+          <!-- <div class="demo-info">
             <p><strong>Demo Credentials:</strong></p>
             <p>👑 Admin: admin@villa.com / admin123</p>
             <p>👨‍💼 Manager: manager@villa.com / manager123</p>
             <p>👩‍💼 Staff: staff@villa.com / staff123</p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
