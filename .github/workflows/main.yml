@@ -1,10 +1,10 @@
-name: Node.js CI/CD
+name: Node.js CI/CD # The name of your workflow
 
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
-    inputs:
+    branches: [main] # Trigger on pushes to the main branch
+  workflow_dispatch: # Allow manual triggering of the workflow
+    inputs: # Define inputs for manual triggers
       deploy-environment:
         description: 'Select the deployment environment'
         required: true
@@ -13,39 +13,33 @@ on:
         options:
           - production
           - staging
-
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # The operating system the job runs on
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4 # Step to check out your repository code
+      - name: Use Node.js
+        uses: actions/setup-node@v4 # Step to set up Node.js environment
         with:
-          node-version: '20.x'
-          cache: 'npm'
-
+          node-version: '20.x' # Specify the desired Node.js version
+          cache: 'npm' # Caches dependencies to speed up subsequent runs
       - name: Install dependencies
-        run: npm install
-
+        run: npm install # Command to install project dependencies
       - name: Build project
-        run: npm run build
-
+        run: npm run build # Command to run your project's build script
+      - name: show dir
+        run: echo $GITHUB_WORKSPACE/dist
       - name: Show build files
         run: |
+          pwd
           ls -la
           ls -la dist
-
-      # 🚀 DEPLOY VIA SFTP (SSH)
-      - name: Deploy via SFTP
-        uses: appleboy/scp-action@v0.1.7
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          port: 22
-          source: "dist/*"
-          target: "/var/www/html"
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/
+          server-dir: /htdocs/
